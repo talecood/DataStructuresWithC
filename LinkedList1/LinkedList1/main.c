@@ -47,5 +47,23 @@ int main(void) {
     // Print all the nodes in the list
     print(root);
 
+    //Add a new node between the nodes
+    for (int i = 0; i < 3; i++) {
+        iterator = iterator->next;
+   }
+    node* temp = (node*)malloc(sizeof(node));
+    temp->next = iterator->next;
+
+    iterator->next = temp;
+    temp->x = 100;
+
+    printf("\nNew LinkedList : \n");
+    print(root);
+
+
+
+
+
+
     return 0;
 }
