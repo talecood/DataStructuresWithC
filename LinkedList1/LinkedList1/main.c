@@ -18,6 +18,7 @@ void print(node* r) {
         printf("%d -> ", r->x);  // Print the value of the current node
         r = r->next;  // Move to the next node
     }
+    printf("\n");
 }
 
 // Function to append a new node with value x at the end of the list
@@ -54,6 +55,39 @@ node* appendByOrder(node* r, int x) {
     return r;  // Return the head of the list
 }
 
+// Function to delete the first node with value x from the linked list
+node* delete(node* r, int x) {
+    node* temp;  // Pointer to hold the node to be deleted
+    node* iterator = r;  // Pointer to traverse the list
+
+    // If the node to be deleted is the head of the list
+    if (r->x == x) {
+        temp = r;  // Save the current head node to temp
+        r = r->next;  // Move the head pointer to the next node
+        free(temp);  // Free the memory of the old head node
+        return r;  // Return the new head of the list
+    }
+
+    // Traverse the list to find the node to be deleted
+    while (iterator->next != NULL && iterator->next->x != x) {
+        iterator = iterator->next;  // Move to the next node
+    }
+
+    // If the node to be deleted is not found
+    if (iterator->next == NULL) {
+        printf("Number not found.\n");  // Print an error message
+        return r;  // Return the unchanged list
+    }
+
+    // Node to be deleted is found, remove it from the list
+    temp = iterator->next;  // Save the node to be deleted
+    iterator->next = iterator->next->next;  // Bypass the node to be deleted
+    free(temp);  // Free the memory of the node to be deleted
+
+    return r;  // Return the head of the list
+}
+
+
 int main(void) {
     node* root;  // Pointer to the head of the list
     root = (node*)malloc(sizeof(node));  // Allocate memory for the head node
@@ -68,8 +102,13 @@ int main(void) {
     root = appendByOrder(root, 450);
     root = appendByOrder(root, 50);
 
-
     // Print all the nodes in the list
+    print(root);
+
+    root = delete(root, 50);
+    root = delete(root, 999);
+    root = delete(root, 4);
+    root = delete(root, 450);
     print(root);
 
     // Add a new node with value 100 between nodes
