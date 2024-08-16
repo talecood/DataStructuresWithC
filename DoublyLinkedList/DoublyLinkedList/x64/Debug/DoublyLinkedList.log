@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\DoublyLinkedList\DoublyLinkedList\main.c(103,5): warning C4013: 'bastir' undefined; assuming extern returning int
+main.obj : error LNK2019: unresolved external symbol bastir referenced in function main
+C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\DoublyLinkedList\x64\Debug\DoublyLinkedList.exe : fatal error LNK1120: 1 unresolved externals
