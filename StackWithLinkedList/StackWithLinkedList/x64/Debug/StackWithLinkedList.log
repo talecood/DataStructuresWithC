@@ -1,0 +1,5 @@
+﻿  stack_ll.c
+C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\StackWithLinkedList\StackWithLinkedList\stack_ll.c(9,3): error C2371: 'node': redefinition; different basic types
+  C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\StackWithLinkedList\StackWithLinkedList\stack_ll.h(5,18):
+  see declaration of 'node'
+  
