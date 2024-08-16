@@ -1,86 +1,75 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack_arr.h"
 
-int size = 2;
-int top = 0;
-int* array;
+stack* tanim() {  // Definition function to initialize a stack
+	stack* s = (stack*)malloc(sizeof(stack));
+	s->array = NULL;
+	s->size = 2;
+	s->top = 0;
+	return s;
+}
 
-int pop() {
-	if (array == NULL) {
-		printf("Array is empty");
+int pop(stack* s) {
+	if (s->top <= 0 || s->array == NULL) {
+		printf("Stack is empty\n");
 		return -1;
 	}
-
-	if (top > 0 && top < size / 4) {
-		int* arr2 = (int*)malloc(sizeof(int) * size / 2);  // Halve the size of the array
-		for (int i = 0; i < top; i++) {  // Copy only the used elements
-			arr2[i] = array[i];
-		}
-		free(array);
-		array = arr2;
-		size /= 2;
+	if (s->top <= s->size / 4 && s->size > 2) {
+		int* dizi2 = (int*)malloc(sizeof(int) * s->size / 2);
+		for (int i = 0; i < s->top; i++)
+			dizi2[i] = s->array[i];
+		free(s->array);
+		s->array = dizi2;
+		s->size /= 2;
 	}
-	return array[--top];
+	return s->array[--s->top];
 }
 
-void push(int a) {
-	if (array == NULL) {
-		array = (int*)malloc(sizeof(int) * size);  // Dynamically allocate memory for the array
+void push(int a, stack* s) {
+	if (s->array == NULL) {
+		s->array = (int*)malloc(sizeof(int) * 2);
 	}
-	if (top >= size) {
-		int* arr2 = (int*)malloc(sizeof(int) * size * 2);  // Double the size of the array
-		for (int i = 0; i < top; i++) {  // Copy only the used elements
-			arr2[i] = array[i];
-		}
-		free(array);
-		array = arr2;
-		size *= 2;
+	if (s->top >= s->size) {  // Changed from s->size - 1 to s->size
+		int* dizi2 = (int*)malloc(sizeof(int) * s->size * 2);
+		for (int i = 0; i < s->size; i++)
+			dizi2[i] = s->array[i];
+		free(s->array);
+		s->array = dizi2;
+		s->size *= 2;
 	}
-	array[top++] = a;
+	s->array[s->top++] = a;
 }
 
-void print() {
-	printf("Size : %d\n", size);
-	for (int i = 0; i < top; i++) {
-		printf("%d ", array[i]);
+void print(stack* s) {
+	printf("Size: %d\n", s->size);
+	for (int i = 0; i < s->top; i++) {
+		printf("%d ", s->array[i]);
 	}
 	printf("\n");
 }
 
 int main(void) {
-	array = (int*)malloc(sizeof(int) * size);  // Dynamically allocate memory for the array
+	stack* s1 = tanim();  // Changed from definition() to tanim()
+	stack* s2 = tanim();  // Changed from definition() to tanim()
 
-	push(10);
-	push(20);
-	push(30);
-	push(40);
-	push(50);
+	for (int i = 0; i < 10; i++) {
+		push(i * 10, s1);
+	}
 
-	print();
+	print(s1);
 
-	printf("\npopped %d\n", pop());
-	printf("popped %d\n", pop());
-	printf("popped %d\n", pop());
-	printf("popped %d\n", pop());
-	printf("popped %d\n", pop());
+	for (int i = 0; i < 10; i++) {
+		push(pop(s1), s2);
+	}
 
-	print();
+	print(s1);
+	print(s2);
 
-	push(10);
-	push(20);
-	push(30);
-	push(40);
-	push(50);
-	push(60);
-	push(70);
-	push(80);
-	push(90);
-
-	print();
-
-	free(array);  // Don't forget to free the dynamically allocated memory before exiting
+	free(s1->array);  // Free the allocated memory
+	free(s2->array);  // Free the allocated memory
+	free(s1);         // Free the stack structure itself
+	free(s2);         // Free the stack structure itself
 
 	return 0;
 }
