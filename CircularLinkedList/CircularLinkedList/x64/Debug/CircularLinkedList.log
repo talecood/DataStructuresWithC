@@ -1,24 +1,4 @@
-﻿  c.cpp
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(59,7): error C2059: syntax error: 'delete'
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(59,30): error C2143: syntax error: missing ';' before '{'
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(59,30): error C2447: '{': missing function header (old-style formal list?)
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(108,12): error C2541: 'delete': cannot delete objects that are not pointers
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(108,28): error C2440: '=': cannot convert from 'void' to 'node *'
-  C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(108,28):
-  Expressions of type void cannot be converted to other types
-  
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(109,12): error C2541: 'delete': cannot delete objects that are not pointers
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(109,29): error C2440: '=': cannot convert from 'void' to 'node *'
-  C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(109,29):
-  Expressions of type void cannot be converted to other types
-  
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(110,12): error C2541: 'delete': cannot delete objects that are not pointers
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(110,27): error C2440: '=': cannot convert from 'void' to 'node *'
-  C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(110,27):
-  Expressions of type void cannot be converted to other types
-  
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(111,12): error C2541: 'delete': cannot delete objects that are not pointers
-C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(111,29): error C2440: '=': cannot convert from 'void' to 'node *'
-  C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\c.cpp(111,29):
-  Expressions of type void cannot be converted to other types
-  
+﻿  main.c
+C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\CircularLinkedList\main.c(102,5): warning C4013: 'bastir' undefined; assuming extern returning int
+main.obj : error LNK2019: unresolved external symbol bastir referenced in function main
+C:\Users\nedim göktuğ tabak\Desktop\Git\DataStructuresWithC\CircularLinkedList\x64\Debug\CircularLinkedList.exe : fatal error LNK1120: 1 unresolved externals
