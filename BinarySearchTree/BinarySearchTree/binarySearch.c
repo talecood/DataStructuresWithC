@@ -18,8 +18,7 @@ node* add(node* tree, int data) {
 	}
 	if (data < tree->data) {
 		tree->left = add(tree->left, data);
-	}
-	else {
+	} else {
 		tree->right = add(tree->right, data);
 	}
 	return tree;
@@ -46,7 +45,7 @@ int main(void) {
 	tree = add(tree, 18);
 	tree = add(tree, 27);
 	tree = add(tree, 28);
-
+	
 	inOrderTraversal(tree);
 
 	return 0;
