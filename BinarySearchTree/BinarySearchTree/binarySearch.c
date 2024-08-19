@@ -33,6 +33,23 @@ void inOrderTraversal(node* tree) {
 	inOrderTraversal(tree->right);
 }
 
+int search(node* tree, int expected) {
+	if (tree == NULL) {
+		return -1;
+	}
+	if (tree->data = expected) {
+		return 1;
+	}
+	if (search(tree->right,expected) == 1) {
+		return 1;
+	}
+	if (search(tree->left, expected) == 1) {
+		return 1;
+	}
+	return -1;
+	
+}
+
 int main(void) {
 	node* tree = NULL;
 
@@ -47,6 +64,8 @@ int main(void) {
 	tree = add(tree, 28);
 	
 	inOrderTraversal(tree);
+
+	printf("\nSearch Result = %d\n", search(tree, 190));
 
 	return 0;
 }
