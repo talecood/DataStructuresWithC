@@ -37,7 +37,7 @@ int search(node* tree, int expected) {
 	if (tree == NULL) {
 		return -1;
 	}
-	if (tree->data = expected) {
+	if (tree->data == expected) {
 		return 1;
 	}
 	if (search(tree->right,expected) == 1) {
@@ -48,6 +48,21 @@ int search(node* tree, int expected) {
 	}
 	return -1;
 	
+}
+
+int maxValue(node* tree) {
+	while (tree->right != NULL) {
+		tree = tree->right;
+	}
+	return tree->data;
+
+}
+int minValue(node* tree) {
+	while (tree->left != NULL) {
+		tree = tree->left;
+	}
+	return tree->data;
+
 }
 
 int main(void) {
@@ -66,6 +81,6 @@ int main(void) {
 	inOrderTraversal(tree);
 
 	printf("\nSearch Result = %d\n", search(tree, 190));
-
+	printf("Max Value = %d, Min Value = %d", maxValue(tree), minValue(tree));
 	return 0;
 }
