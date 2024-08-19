@@ -1,47 +1,32 @@
-#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack_ll.h"
-
-typedef struct node {
-	int data;
-	struct node* next;
-} node;
-
-int pop(node** root) {
-	if (*root == NULL) {
-		printf("Stack is empty.\n");
+void bastir(node* root) {
+	while (root != NULL) {
+		printf("%d ->", root->data);
+		root = root->next;
+	}
+}
+int pop(node* root) {
+	if (root == NULL) {
+		printf("stack bos");
 		return -1;
 	}
-
-	node* iterator = *root;
-	if (iterator->next == NULL) {  // Case where there's only one element
-		int rvalue = iterator->data;
-		free(iterator);
-		*root = NULL;
+	if (root->next == NULL) {
+		int rvalue = root->data;
+		free(root);
 		return rvalue;
 	}
-
-	while (iterator->next->next != NULL) {
-		iterator = iterator->next;
-	}
-
-	node* temp = iterator->next;
+	node* iter = root;
+	while (iter->next->next != NULL)
+		iter = iter->next;
+	node* temp = iter->next;
 	int rvalue = temp->data;
-
+	iter->next = NULL;
 	free(temp);
-	iterator->next = NULL;
 	return rvalue;
 }
-
-void print(node* r) {
-	while (r != NULL) {
-		printf("%d -> ", r->data);
-		r = r->next;
-	}
-	printf("NULL\n");
-}
-
 node* push(node* root, int a) {
 	if (root == NULL) {
 		root = (node*)malloc(sizeof(node));
@@ -49,17 +34,16 @@ node* push(node* root, int a) {
 		root->next = NULL;
 		return root;
 	}
-
-	node* iterator = root;
-	while (iterator->next != NULL) {
-		iterator = iterator->next;
-	}
+	node* iter = root;
+	while (iter->next != NULL)
+		iter = iter->next;
 	node* temp = (node*)malloc(sizeof(node));
 	temp->data = a;
 	temp->next = NULL;
-	iterator->next = temp;
+	iter->next = temp;
 	return root;
 }
+
 
 int main(void) {
 	node* s = NULL;

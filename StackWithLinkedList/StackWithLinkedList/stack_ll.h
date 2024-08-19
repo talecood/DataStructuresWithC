@@ -1,16 +1,10 @@
 #ifndef stack_ll
 #define stack_ll
-
-// Forward declaration of node structure
-typedef struct n node;
-
 struct n {
-    int data;
-    struct n* next;  // Using typedef'd 'node' after its declaration
+	node* next;
+	int data;
 };
-
-// Function prototypes
-int pop(node**);          // Accepting a pointer to pointer to modify the root
+typedef struct n node;
+int pop(node*);
 node* push(node*, int);
-
 #endif
