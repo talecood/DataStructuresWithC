@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="c.cpp">
+    <ClCompile Include="insertion.c">
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
   </ItemGroup>
