@@ -9,12 +9,19 @@ struct n{
 typedef struct n node;
 
 node* root = NULL;
+node* last = NULL;
+
 void enqueue(int a) {
 	if (root == NULL) {
 		root = (node*)malloc(sizeof(node));
 		root->data = a;
 		root->next = NULL;
-
+		last = root;
+	}
+	else {
+		last->next = (node*)malloc(sizeof(node));
+		last->next->data = a;
+		last = last->next;
 	}
 }
 
@@ -27,12 +34,15 @@ int dequeue() {
 	node* temp = root;
 	root = root->next;
 	free(temp);
+	return rvalue;
 
 }
 
 
 int main(void) {
 
+	enqueue(10);
+	enqueue(20);
 
 
 	return 0;
