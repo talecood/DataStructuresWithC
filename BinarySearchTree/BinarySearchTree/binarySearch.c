@@ -65,6 +65,32 @@ int minValue(node* tree) {
 
 }
 
+node* delete(node* tree,int x) {
+	if (tree == NULL) {
+		return NULL;
+	}
+	if (tree->data == x) {
+		if (tree->left == NULL && tree->right == NULL) {
+			return NULL;
+		}
+		if (tree->right != NULL) {
+			tree->data = minValue(tree->right);
+			tree->right = delete(tree->right, minValue(tree->right));
+			return tree;
+		}
+		tree->data = maxValue(tree->left);
+		tree->left = delete(tree->left, maxValue(tree->left));
+		return tree;
+	}
+	if (tree->data < x) {
+		tree->right= delete(tree->right, x);
+		return tree;
+	}
+	tree->left = delete(tree->left, x); 
+	return tree;
+
+}
+
 int main(void) {
 	node* tree = NULL;
 
@@ -81,6 +107,9 @@ int main(void) {
 	inOrderTraversal(tree);
 
 	printf("\nSearch Result = %d\n", search(tree, 190));
-	printf("Max Value = %d, Min Value = %d", maxValue(tree), minValue(tree));
+	printf("Max Value = %d, Min Value = %d\n", maxValue(tree), minValue(tree));
+
+	tree = delete(tree, 190);
+	inOrderTraversal(tree);
 	return 0;
 }
